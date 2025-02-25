@@ -14,12 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 
 from sspApp import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('index/', views.index),
+    path('', views.index, name='index'), # 메인화면
+    path('join_01/', views.join_01, name='join_01'), # 회원가입화면
+    path('join_02/', views.join_02, name='join_02'), # 회원가입화면
+    path("check-business-number/", views.check_business_number, name="check_business_number"), # 사업자등록번호 유무 조회
 ]

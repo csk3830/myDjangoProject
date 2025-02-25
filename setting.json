@@ -1,0 +1,9 @@
+{
+  "DB" : {
+    "DBHost" : "localhost",
+    "DBName" : "sspdb",
+    "DBUser" : "postgres",
+    "DBPwd" : "psql",
+    "DBPort" : "5432"
+  }
+}

@@ -1,0 +1,52 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- base CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Solution Support Portal</title>
+</head>
+<body>
+
+<!-- 네비게이션바 -->
+<nav style="background-color: gray; height: 100px;">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-start gap-5">
+            <a href="{% url 'index' %}">Logo</a>
+            <ul class="d-flex justify-content-start gap-3">
+                <li><a>공지사항</a></li>
+                <li><a>자주 묻는 질문</a></li>
+                <li><a>기술문의</a></li>
+            </ul>
+        </div>
+        <div class="d-flex justify-content-end">
+            <ul class="d-flex justify-content-start gap-3">
+                <li><a>로그인</a></li>
+                <li><a>회원사 신청</a></li>
+                <li><a href="{% url 'join_01' %}">이용자 등록</a></li>
+                <li><a>바이텍씨스템 바로가기</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+<!-- 푸터 -->
+<footer>
+    <div style="background-color: gray;">
+        <h1>Footer Area!!</h1>
+    </div>
+</footer>
+
+</body>
+</html>

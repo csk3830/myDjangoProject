@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>join_01 Page</h1>
+<hr>
+<div class="d-flex justify-content-center gap-3 align-items-center">
+    <span>사업자등록번호(본사)</span>
+    <input type="text" name="business_number" id="business_number">
+    <button class="btn btn-primary" id="checkBtn">확인</button>
+    <span>('-'없이 10자리 숫자입력)</span>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector("#checkBtn").addEventListener("click", function() {
+        const businessNumber = document.querySelector("#business_number").value.trim();
+
+        // 입력값 검증 (10자리 숫자)
+        if (businessNumber.length !== 10 || isNaN(businessNumber)) {
+            alert("사업자등록번호는 '-' 없이 10자리 숫자로 입력하세요.");
+            return;
+        }
+
+        // AJAX 요청
+        fetch("/check-business-number/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ business_number: businessNumber })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);  // 서버에서 온 메시지 출력
+
+            if (!data.exists) {
+                // 사업자등록번호가 있으면 다음 페이지로 이동
+                window.location.href = "/join_02/?business_number=" + businessNumber;
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("서버 오류가 발생했습니다.");
+        });
+    });
+});
+
+</script>
+{% endblock %}
